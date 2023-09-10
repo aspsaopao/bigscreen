@@ -1,0 +1,846 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>警情警力分析</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<script src="js/echarts.min.js" charset="utf-8"></script>
+<script src="js/jquery-3.2.0.min.js" charset="utf-8"></script>
+<script src="beijing.js"></script>
+<style>
+  .space_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .space_box {
+    width: 80%;
+  }
+
+  .space_inner {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #11538d;
+  }
+
+  .space_num {
+    font-size: 20px;
+  }
+</style>
+
+<body>
+  <div class="wpbox">
+    <div class="bnt">
+      <div class="topbnt_left fl">
+        <ul>
+          <li class="active"><a href="#">智慧教研</a></li>
+          <li><a href="../项目展示模板4/index.html">智慧管理</a></li>
+        </ul>
+      </div>
+      <h1 class="tith1 fl">新龙县信息化教育数据应用监控平台</h1>
+      <div class=" fr topbnt_right">
+        <ul>
+          <li><a href="#">智慧教学</a></li>
+          <li><a href="#">空间普及</a></li>
+        </ul>
+        </ul>
+      </div>
+    </div>
+    <!-- bnt end -->
+    <div class="left1">
+      <div class="aleftboxttop pt1">
+        <h2 class="tith2">空间开通情况</h2>
+        <div class="lefttoday_tit"></div>
+        <div class="tlbox">
+          <ul class="space_container">
+            <li class="space_box">
+              <div class="space_inner">
+                <span>学校空间数</span>
+                <span class="space_num">2</span>
+              </div>
+            </li>
+            <li class="space_box">
+              <div class="space_inner">
+                <span>教师空间数</span>
+                <span class="space_num">234</span>
+              </div>
+            </li>
+            <li class="space_box">
+              <div class="space_inner">
+                <span>学生空间数</span>
+                <span class="space_num">3345</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- lefttoday_number end -->
+      </div>
+      <div class="aleftboxtmidd">
+        <h2 class="tith2 pt2">“三通”建设情况</h2>
+        <div class="lefttoday_tit"></div>
+        <div class="tlbox_now" id="construct">
+
+        </div>
+      </div>
+      <div class="aleftboxtbott">
+        <h2 class="tith2">远程网络教育教学现状</h2>
+        <div id="statusQuo" class="aleftboxtbott_cont2"></div>
+      </div>
+    </div>
+    <!--  left1 end -->
+    <div class="mrbox">
+      <div class="mrbox_topmidd" style="width: 69%;">
+        <div class="amiddboxttop">
+          <h2 class="tith2 pt1">新龙县学校分布图</h2>
+          <div class="hot_map" id="topmap">
+
+          </div>
+        </div>
+        <!--  amiddboxttop end-->
+        <div class="amidd_bott">
+          <!-- <div class="amiddboxtbott1 fl">
+            <h2 class="tith2 pt1">访问及活跃情况</h2>
+            <div class="lefttoday_tit">
+              <p class="fr">2018-06-14</p>
+            </div>
+            <div id="amiddboxtbott1" class="amiddboxtbott1content2"></div>
+          </div> -->
+
+          <div class="amiddboxtbott2 fl">
+            <h2 class="tith2 pt1">远程网络教育教学资源使用情况</h2>
+            <div id="arightboxbott" class="amiddboxtbott2content"></div>
+          </div>
+        </div>
+        <!-- amidd_bott end -->
+      </div>
+      <!-- mrbox_top end -->
+      <div class="mrbox_top_right">
+        <div class="arightboxtop">
+          <h2 class="tith2">用户活跃趋势</h2>
+          <div id="aleftboxtbott" class="aleftboxtbott_contr"></div>
+        </div>
+        <div class="arightboxbott">
+          <h2 class="tith2 ">信息化硬件设施情况</h2>
+
+          <div id="aleftboxtmiddr" class="arightboxbottcont2"></div>
+        </div>
+      </div>
+      <!-- mrbox_top_right end -->
+    </div>
+
+  </div>
+  </div>
+
+  <script type="text/javascript">
+    var myChart = echarts.init(document.getElementById('aleftboxtmidd'));
+    option = {
+      color: ['#4d72d9', '#76c4bf', '#e5ffc7'],
+      backgroundColor: 'rgba(1,202,217,.2)',
+      grid: {
+        left: 60,
+        right: 60,
+        top: 20,
+        bottom: 0,
+        containLabel: true
+      },
+      legend: {
+        left: 10,
+        top: 5,
+        textStyle: {
+          fontSize: 10,
+          color: 'rgba(255,255,255,.6)'
+        },
+        data: ['A照', 'B照', 'C照']
+      },
+      calculable: true,
+      series: [
+
+        {
+          name: '面积模式',
+          type: 'pie',
+          radius: [20, 70],
+          center: ['50%', '55%'],
+          roseType: 'area',
+          data: [
+            { value: 187650, name: 'A照' },
+            { value: 145896, name: 'B照' },
+            { value: 148920, name: 'C照' },
+
+          ]
+        }
+      ]
+    };
+    myChart.setOption(option);
+  </script>
+  <!-- 信息化硬件设施情况 -->
+  <script type="text/javascript">
+    var myChart = echarts.init(document.getElementById('aleftboxtmiddr'));
+    option = {
+      color: ['skyblue'],
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          type: 'shadow'
+        }
+      },
+      xAxis: [
+        {
+          type: 'category',
+          data: ['计算机教室数', '多媒体教室数', '录播教室数', '校园广播电视台数', '创客教室数', '电子阅卷系统数', '县级教学情况监控点位数'],
+          axisTick: {
+            alignWithLabel: true
+          },
+          axisLabel:{
+            interval:0,
+            rotate:20
+          },
+          axisLine: {
+                lineStyle:
+                {
+                  color: 'white'
+                }
+              }
+        }
+      ],
+      yAxis: [
+        {
+          type: 'value',
+          axisLine: {
+                lineStyle:
+                {
+                  color: 'white'
+                }
+              }
+        }
+      ],
+      series: [
+        {
+          name: '数量',
+          type: 'bar',
+          barWidth: '50%',
+          data: [10, 52, 200, 334, 390, 330, 220]
+        }
+      ]
+};
+   
+    myChart.setOption(option);
+  </script>
+
+  <!--三通建设情况 -->
+  <script>
+    var chartDom = echarts.init(document.getElementById('construct'));
+    var option;
+    option = {
+      color: ['#f1b1ff', '#aae3fb', '#e5ffc7'],
+      // backgroundColor: 'rgba(1,202,217,.2)',
+      grid: {
+        left: 60,
+        right: 60,
+        top: 20,
+        bottom: 0,
+        containLabel: true
+      },
+      legend: {
+        left: 10,
+        top: 5,
+        textStyle: {
+          fontSize: 10,
+          color: 'rgba(255,255,255,.6)'
+        },
+        data: ['班班通', '校校通', '人人通']
+      },
+      calculable: true,
+      series: [
+
+        {
+          name: '面积模式',
+          type: 'pie',
+          radius: [20, 70],
+          center: ['50%', '55%'],
+          roseType: 'area',
+          data: [
+            { value: 187650, name: '班班通' },
+            { value: 145896, name: '校校通' },
+            { value: 148920, name: '人人通' },
+
+          ]
+        }
+      ]
+    };
+
+    option && chartDom.setOption(option);
+  </script>
+  <script type="text/javascript">
+    var myChart = echarts.init(document.getElementById('aleftboxtbott'));
+    option = {
+      color: ['#7ecef4'],
+      backgroundColor: 'rgba(1,202,217,.2)',
+      grid: {
+        left: 20,
+        right: 50,
+        top: 23,
+        bottom: 30,
+        containLabel: true
+      },
+
+      xAxis: {
+        type: 'value',
+        axisLine: {
+          lineStyle: {
+            color: 'rgba(255,255,255,.2)'
+          }
+        },
+        splitLine: {
+          lineStyle: {
+            color: 'rgba(255,255,255,0)'
+          }
+        },
+        axisLabel: {
+          color: "rgba(255,255,255,1)"
+        },
+        data: ['1000', '5000', '10000', '15000', '20000', '25000'],
+        boundaryGap: [0, 0.01]
+      },
+      yAxis: {
+        type: 'category',
+        axisLine: {
+          lineStyle: {
+            color: 'rgba(255,255,255,.5)'
+          }
+        },
+        splitLine: {
+          lineStyle: {
+            color: 'rgba(255,255,255,.1)'
+          }
+        },
+        axisLabel: {
+          color: "rgba(255,255,255,.5)"
+        },
+        data: ['人人通使用者', '班班通使用者', '校讯通使用者', '学生', '家长', '教室', '其他']
+      },
+      series: [
+        {
+          name: '2011年',
+          type: 'bar',
+          barWidth: 30,
+          itemStyle: {
+            normal: {
+              color: new echarts.graphic.LinearGradient(
+                1, 0, 0, 1,
+                [
+                  { offset: 0, color: 'rgba(230,253,139,.7)' },
+                  { offset: 1, color: 'rgba(41,220,205,.7)' }
+                ]
+              )
+            }
+          },
+          data: [18203, 23489, 29034, 18203, 23489, 29034, 29034]
+        }
+      ]
+    };
+    myChart.setOption(option);
+  </script>
+  <script type="text/javascript">
+    var myChart = echarts.init(document.getElementById('amiddboxtbott1'));
+    var data = [
+      [[28604, 77, 17099, 'Australia', 1990], [31163, 77.4, 2440, 'Canada', 1990], [1516, 68, 1605773, 'China', 1990], [13670, 74.7, 10082, 'Cuba', 1990], [28599, 75, 49805, 'Finland', 1990], [29476, 77.1, 569499, 'France', 1990], [31476, 75.4, 789237, 'Germany', 1990], [28666, 78.1, 254830, 'Iceland', 1990], [1777, 57.7, 870776, 'India', 1990], [29550, 79.1, 129285, 'Japan', 1990], [2076, 67.9, 201954, 'North Korea', 1990], [12087, 72, 42954, 'South Korea', 1990], [24021, 75.4, 33934, 'New Zealand', 1990], [43296, 76.8, 4240375, 'Norway', 1990], [10088, 70.8, 381958, 'Poland', 1990], [19349, 69.6, 1475652, 'Russia', 1990], [10670, 67.3, 53905, 'Turkey', 1990], [26424, 75.7, 57117, 'United Kingdom', 1990], [37062, 75.4, 252810, 'United States', 1990]],
+      [[44056, 81.8, 23973, 'Australia', 2015], [43294, 81.7, 35927, 'Canada', 2015], [13334, 76.9, 1376043, 'China', 2015], [21291, 78.5, 11562, 'Cuba', 2015], [38923, 80.8, 55057, 'Finland', 2015], [37599, 81.9, 64345, 'France', 2015], [44053, 81.1, 80545, 'Germany', 2015], [42182, 82.8, 329425, 'Iceland', 2015], [5903, 66.8, 1311027, 'India', 2015], [36162, 83.5, 126571, 'Japan', 2015], [1390, 71.4, 251317, 'North Korea', 2015], [34644, 80.7, 503439, 'South Korea', 2015], [34186, 80.6, 4528526, 'New Zealand', 2015], [64304, 81.6, 5210967, 'Norway', 2015], [24787, 77.3, 386194, 'Poland', 2015], [23038, 73.13, 143918, 'Russia', 2015], [19360, 76.5, 78630, 'Turkey', 2015], [38225, 81.4, 64715810, 'United Kingdom', 2015], [53354, 79.1, 321771, 'United States', 2015]]
+    ];
+
+    option = {
+      backgroundColor: 'rgba(1,202,217,.2)',
+      grid: {
+        left: 40,
+        right: 40,
+        top: 50,
+        bottom: 40
+      },
+      title: {
+        top: 5,
+        left: 20,
+        textStyle: {
+          fontSize: 10,
+          color: 'rgba(255,255,255,.6)'
+        },
+        text: '环比类型：日环比'
+      },
+      // legend: {
+      //     right: 10,
+      //     top: 5,
+      //     textStyle:{
+      //       fontSize:10,
+      //       color:'rgba(255,255,255,.6)'
+      //     },
+      //     data: ['1990', '2015']
+      // },
+      xAxis: {
+        axisLine: {
+          lineStyle: {
+            color: 'rgba(255,255,255,.2)'
+          }
+        },
+        splitLine: {
+          lineStyle: {
+            color: 'rgba(255,255,255,.1)'
+          }
+        },
+        axisLabel: {
+          color: "rgba(255,255,255,.7)"
+        }
+      },
+      yAxis: {
+        axisLine: {
+          lineStyle: {
+            color: 'rgba(255,255,255,.2)'
+          }
+        },
+        splitLine: {
+          lineStyle: {
+            color: 'rgba(255,255,255,.1)'
+          }
+        },
+        axisLabel: {
+          color: "rgba(255,255,255,.7)"
+        },
+        scale: true
+      },
+      series: [{
+        name: '2015',
+        data: data[1],
+        type: 'scatter',
+        symbolSize: function (data) {
+          return Math.sqrt(data[2]) / 5e2;
+        },
+        label: {
+          emphasis: {
+            show: true,
+            formatter: function (param) {
+              return param.data[3];
+            },
+            position: 'top'
+          }
+        },
+        itemStyle: {
+          normal: {
+            shadowBlur: 10,
+            shadowColor: 'rgba(25, 100, 150, 0.5)',
+            shadowOffsetY: 5,
+            color: new echarts.graphic.RadialGradient(0.4, 0.3, 1, [{
+              offset: 0,
+              color: 'rgb(129, 227, 238)'
+            }, {
+              offset: 1,
+              color: 'rgb(25, 183, 207)'
+            }])
+          }
+        }
+      }]
+    };
+    myChart.setOption(option);
+  </script>
+
+  <script type="text/javascript">
+    var myChart = echarts.init(document.getElementById('amiddboxtbott2'));
+    option = {
+      backgroundColor: 'rgba(1,202,217,.2)',
+      grid: {
+        left: 60,
+        right: 60,
+        top: 50,
+        bottom: 40
+      },
+
+      toolbox: {
+        feature: {
+          dataView: { show: true, readOnly: false },
+          magicType: { show: true, type: ['line', 'bar'] },
+          restore: { show: true },
+          saveAsImage: { show: true }
+        }
+      },
+      legend: {
+        top: 10,
+        textStyle: {
+          fontSize: 10,
+          color: 'rgba(255,255,255,.7)'
+        },
+        data: ['2017年', '2018年', '同比增速']
+      },
+      xAxis: [
+        {
+          type: 'category',
+          axisLine: {
+            lineStyle: {
+              color: 'rgba(255,255,255,.2)'
+            }
+          },
+          splitLine: {
+            lineStyle: {
+              color: 'rgba(255,255,255,.1)'
+            }
+          },
+          axisLabel: {
+            color: "rgba(255,255,255,.7)"
+          },
+
+          data: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+          axisPointer: {
+            type: 'shadow'
+          }
+        }
+      ],
+      yAxis: [
+        {
+          type: 'value',
+          name: '',
+          min: 0,
+          max: 250,
+          interval: 50,
+          axisLine: {
+            lineStyle: {
+              color: 'rgba(255,255,255,.3)'
+            }
+          },
+          splitLine: {
+            lineStyle: {
+              color: 'rgba(255,255,255,.01)'
+            }
+          },
+
+          axisLabel: {
+            formatter: '{value} ml'
+          }
+        },
+        {
+          type: 'value',
+          name: '',
+          max: 25,
+          interval: 5,
+          axisLine: {
+            lineStyle: {
+              color: 'rgba(255,255,255,.3)'
+            }
+          },
+          splitLine: {
+            lineStyle: {
+              color: 'rgba(255,255,255,.1)'
+            }
+          },
+          axisLabel: {
+            formatter: '{value} °C'
+          }
+        }
+      ],
+      series: [
+
+        {
+          name: '2017年',
+          type: 'bar',
+          itemStyle: {
+            normal: {
+              color: new echarts.graphic.LinearGradient(
+                0, 0, 0, 1,
+                [
+                  { offset: 0, color: '#b266ff' },
+                  { offset: 1, color: '#121b87' }
+                ]
+              )
+            }
+          },
+          data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
+        },
+        {
+          name: '2018年',
+          type: 'bar',
+          itemStyle: {
+            normal: {
+              color: new echarts.graphic.LinearGradient(
+                0, 0, 0, 1,
+                [
+                  { offset: 0, color: '#00f0ff' },
+                  { offset: 1, color: '#032a72' }
+                ]
+              )
+            }
+          },
+          data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
+        },
+        {
+          name: '同比增速',
+          type: 'line',
+          itemStyle: {
+            normal: {
+              color: new echarts.graphic.LinearGradient(
+                0, 0, 0, 1,
+                [
+                  { offset: 0, color: '#fffb34' },
+                  { offset: 1, color: '#fffb34' }
+                ]
+              )
+            }
+          },
+          yAxisIndex: 1,
+          data: [2.0, 2.2, 3.3, 4.5, 6.3, 10.2, 20.3, 23.4, 23.0, 16.5, 12.0, 6.2]
+        }
+      ]
+    };
+    myChart.setOption(option);
+  </script>
+  <script type="text/javascript">
+    var statusQuoChart = echarts.init(document.getElementById('statusQuo'));
+     option = {
+      color: ['#E3DAEB', '#BCDDDF', '#706562', '#4A3A3E', '#D98B0F'],
+      tooltip: {
+        trigger: 'axis'
+      },
+      legend: {
+        data: [
+          '初中直播个数',
+          '初中录播班个数',
+          '小学植入式教学班个数',
+          '幼儿园观摩式教学班个数',
+          '四川云教接受学校个数'
+        ],
+        textStyle:
+        {
+          color: 'white',
+          fontSize: 8
+        }
+      },
+      calculable: true,
+      xAxis: [
+        {
+          type: 'category',
+          data: ['2021年', '2022年', '2023年'],
+          axisLine: {
+            lineStyle:
+            {
+              color: 'white'
+            }
+          }
+        }
+      ],
+      yAxis: [
+        {
+          type: 'value',
+          axisLine: {
+            lineStyle:
+            {
+              color: 'white'
+            }
+          }
+        },
+
+      ],
+      series: [
+        {
+          name: '初中直播个数',
+          type: 'bar',
+          data: [405, 63, 84]
+        },
+        {
+          name: '初中录播班个数',
+          type: 'bar',
+          data: [309, 25, 94]
+        },
+        {
+          name: '小学植入式教学班个数',
+          type: 'bar',
+          data: [124, 45, 64]
+        },
+        {
+          name: '幼儿园观摩式教学班个数',
+          type: 'bar',
+          data: [54, 55, 124]
+        },
+        {
+          name: '四川云教接受学校个数',
+          type: 'bar',
+          data: [30, 45, 64]
+        }
+      ]
+    };
+
+    statusQuoChart.setOption(option);
+  </script>
+  <script type="text/javascript">
+    var myChart = echarts.init(document.getElementById('arightboxbott'));
+    option = {
+      // color: ['yellow', "#006699", "#4cabce", "#e5323e"],
+      backgroundColor: 'rgba(1,202,217,.2)',
+
+      grid: {
+        left: '5%',
+        right: '8%',
+        bottom: '7%',
+      },
+      toolbox: {
+        trigger: 'axis'
+      },
+
+      legend: {
+        textStyle: {
+          color: 'white'
+        },
+        data: [{
+          name: '新龙县城兴小学',
+          lineStyle: {
+            color: 'red',
+          },
+          itemStyle: {
+            color: 'red',
+            borderColor: 'red'
+          }
+        }, '新龙县中学', '新龙幼儿园', '新龙县绕鲁乡幼儿园',]
+      },
+      xAxis: {
+        type: 'category',
+        boundaryGap: true,
+        axisLine: {
+          lineStyle: {
+            color: 'rgba(255,255,255,.2)'
+          }
+        },
+        splitLine: {
+          lineStyle: {
+            color: 'rgba(255,255,255,.1)'
+          }
+        },
+        axisLabel: {
+          color: "rgba(255,255,255,.7)"
+        },
+        data: ['2022.12', '2023.1', '2023.2', '2023.3', '2023.4', '2023.5', '2023.6', '2023.7',]
+      },
+      yAxis: {
+        type: 'value',
+        axisLine: {
+          lineStyle: {
+            color: 'rgba(255,255,255,.2)'
+          }
+        },
+        splitLine: {
+          lineStyle: {
+            color: 'rgba(255,255,255,.1)'
+          }
+        },
+        axisLabel: {
+          color: "rgba(255,255,255,.7)"
+        },
+      },
+      series: [
+        {
+          name: '新龙县城兴小学',
+          type: 'line',
+          data: [34, 45, 66, 31, 42, 13, 18, 7],
+        },
+        {
+          name: '新龙县中学',
+          type: 'line',
+          data: [13, 11, 24, 16, 76, 48, 31, 55]
+        },
+        {
+          name: '新龙幼儿园',
+          type: 'line',
+          data: [21, 12, 33, 41, 15, 16, 17, 8]
+        },
+        {
+          name: '新龙县绕鲁乡幼儿园',
+          type: 'line',
+          data: [12, 44, 35, 28, 46, 17, 3, 31]
+        }
+
+      ]
+    };
+    myChart.setOption(option);
+  </script>
+
+  <script type="text/javascript">
+    $(function () {
+      //使用echarts.init()方法初始化一个Echarts实例，在init方法中传入echarts map的容器 dom对象
+      var mapChart = echarts.init(document.getElementById('topmap'));
+      // mapChart的配置
+      var option = {
+        tooltip: {
+          trigger: 'item',
+          formatter: (e) => {
+            console.log(e, 444);
+            return `${e.data.name}<br/>师生数量：${e.data.valueData}`;
+          }
+        },
+        toolbox: {
+          show: true,
+          orient: 'vertical',
+          left: 'right',
+          top: 'center',
+          feature: {
+            dataView: { readOnly: false },
+            restore: {},
+            saveAsImage: {}
+          }
+        },
+        visualMap: {
+          min: 0,
+          max: 2000,
+          text: ['高', '低'],
+          realtime: false,
+          calculable: true,
+          inRange: {
+            color: ['lightskyblue', 'yellow', 'orangered']
+          }
+        },
+        geo: {
+          map: '成都',
+          aspectScale: 0.9,
+          zoom: 1.22,
+          label: {
+            show: true
+          },
+          itemStyle: {
+            color: '#CDAD00'
+          },
+        },
+        series: [
+          {
+            type: 'scatter',//type必须声明为 map 说明该图标为echarts 中map类型
+            coordinateSystem: 'geo',
+            data: [
+              // {name:'新龙县', value: 1800}, 
+              { name: '新龙县绕鲁乡幼儿园', value: [100.312912, 31.100182], valueData: 5645 },
+              { name: '新龙县城兴小学', value: [100.274414, 30.656681], valueData: 45 },
+              { name: '新龙幼儿园', value: [100.312779, 30.941206], valueData: 4 },
+              { name: '新龙县中学', value: [100.312425, 30.9785344], valueData: 3400 },
+
+            ],
+            label:{
+              show:true,
+              formatter:(e)=>{
+                console.log(e,11);
+                return  e.data.name;
+              },
+              fontSize:9,
+              offset:[0,-5]
+            }
+          }
+        ]
+      };
+      //设置图表的配置项
+      mapChart.setOption(option);
+
+      // var  geo = mapChart.getModel().getComonent('geo').coordinateSystem;
+
+    });
+
+
+
+
+  </script>
+
+
+</body>
+
+</html>
