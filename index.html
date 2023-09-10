@@ -1,0 +1,578 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>新龙县信息化教育数据应用监控平台</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<script src="js/echarts.min.js" charset="utf-8"></script>
+<script src="js/jquery-3.2.0.min.js" charset="utf-8"></script>
+<script src="beijing.js"></script>
+<style>
+    .space_container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .space_box {
+        width: 80%;
+    }
+
+    .space_inner {
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        /* background-color: #11538d; */
+    }
+
+    .space_num {
+        font-size: 20px;
+    }
+</style>
+
+<body>
+    <div class="wpbox">
+        <div class="bnt">
+            <h1 class="tith1 fl">新龙县信息化教育数据应用监控平台</h1>
+        </div>
+        <div style="display: flex;height:50% ;margin: 0px 0px 0px 50px;">
+            <div style="width: 18%;">
+                <div class="aleftboxttop pt1" style="height: 50%;">
+                    <h2 class="tith2" style="padding-top: 10px;">空间开通情况</h2>
+                    <!-- <div class="lefttoday_tit"></div> -->
+                    <div class="tlbox">
+                        <ul class="space_container">
+                            <li class="space_box">
+                                <div class="space_inner">
+                                    <span>学校空间数</span>
+                                    <span class="space_num">2</span>
+                                </div>
+                            </li>
+                            <li class="space_box">
+                                <div class="space_inner">
+                                    <span>教师空间数</span>
+                                    <span class="space_num">234</span>
+                                </div>
+                            </li>
+                            <li class="space_box">
+                                <div class="space_inner">
+                                    <span>学生空间数</span>
+                                    <span class="space_num">3345</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="aleftboxtmidd" style="height: 50%;margin-top: 10px;">
+                    <h2 class="tith2 pt2" style="padding-top: 9px;">“三通”建设情况</h2>
+                    <!-- <div class="lefttoday_tit"></div> -->
+                    <div class="tlbox_now" id="construct">
+
+                    </div>
+                </div>
+            </div>
+            <div style="width: 60%">
+                <div class="amiddboxttop" style="height: 100%;">
+                    <h2 class="tith2 pt1" style="padding-top: 12px;">新龙县学校分布图</h2>
+                    <div class="hot_map" id="topmap">
+
+                    </div>
+                </div>
+            </div>
+            <div style="width: 20%">
+                <div class="arightboxtop fl" style="height: 100%;">
+                    <h2 class="tith2 pt1" style="padding-top: 9px;">信息化硬件设施设备建设情况</h2>
+                    <div class="tlbox">
+                        <ul class="space_container">
+                            <li class="space_box">
+                                <div class="space_inner">
+                                    <span>单机教室数</span>
+                                    <span class="space_num">2</span>
+                                </div>
+                            </li>
+                            <li class="space_box">
+                                <div class="space_inner">
+                                    <span>学校空间数</span>
+                                    <span class="space_num">2</span>
+                                </div>
+                            </li>
+                            <li class="space_box">
+                                <div class="space_inner">
+                                    <span>学校空间数</span>
+                                    <span class="space_num">2</span>
+                                </div>
+                            </li>
+                            <li class="space_box">
+                                <div class="space_inner">
+                                    <span>学校空间数</span>
+                                    <span class="space_num">2</span>
+                                </div>
+                            </li>
+                            <li class="space_box">
+                                <div class="space_inner">
+                                    <span>教师空间数</span>
+                                    <span class="space_num">234</span>
+                                </div>
+                            </li>
+                            <li class="space_box">
+                                <div class="space_inner">
+                                    <span>学生空间数</span>
+                                    <span class="space_num">3345</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="display: flex;height:36%;justify-content: space-around;margin: 20px 34px 0px 50px;">
+            <div style=" width: 100%;">
+                <div class="aleftboxtbott" style="height: 100%;">
+                    <h2 class="tith2" style="padding-top: 10px;">远程网络教育教学现状</h2>
+                    <div id="statusQuo" class="aleftboxtbott_cont2" style="margin-top:20px"></div>
+                </div>
+            </div>
+            <div style="width: 100%;">
+                <div class="aleftboxtbott" style="height: 100%;">
+                    <h2 class="tith2 " style="padding-top: 10px;">全日制远程网络教育教学资源使用情况</h2>
+
+                    <div id="aleftboxtmiddr" class="arightboxbottcont2"></div>
+                </div>
+            </div>
+            <div style="width: 100%;">
+                <div class="aleftboxtbott" style="height: 100%;">
+                    <h2 class="tith2 " style="padding-top: 10px;">四川云教教学资源使用情况</h2>
+
+                    <div id="aleftboxtmiddr1" class="arightboxbottcont2"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 全日制远程网络教育教学资源使用情况 -->
+    <!-- 四川云教教学资源使用情况 -->
+    <script type="text/javascript">
+        var myChart = echarts.init(document.getElementById('aleftboxtmiddr'));
+        var myChart1 = echarts.init(document.getElementById('aleftboxtmiddr1'));
+
+        option = {
+            grid: {
+                left: 60,
+                right: 60,
+                top: 50,
+                bottom: 40
+            },
+            legend: {
+                top: 10,
+                textStyle: {
+                    fontSize: 10,
+                    color: 'rgba(255,255,255,.7)'
+                },
+                data: ['2022年', '2023年', '同比增速']
+            },
+            xAxis: [
+                {
+                    type: 'category',
+                    axisLine: {
+                        lineStyle: {
+                            color: 'rgba(255,255,255,.2)'
+                        }
+                    },
+                    splitLine: {
+                        lineStyle: {
+                            color: 'rgba(255,255,255,.1)'
+                        }
+                    },
+                    axisLabel: {
+                        color: "rgba(255,255,255,.7)"
+                    },
+
+                    data: ['新龙县中学', '城区第一完全小学', '城区第二完全小学'],
+                    axisPointer: {
+                        type: 'shadow'
+                    }
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value',
+                    name: '',
+                    min: 0,
+                    max: 250,
+                    interval: 50,
+                    axisLine: {
+                        lineStyle: {
+                            color: 'rgba(255,255,255,.3)'
+                        }
+                    },
+                    splitLine: {
+                        lineStyle: {
+                            color: 'rgba(255,255,255,.01)'
+                        }
+                    },
+
+                    axisLabel: {
+                        formatter: '{value} 次'
+                    }
+                },
+                {
+                    type: 'value',
+                    axisLabel: {
+                        formatter: '{value} %'
+                    }
+                }
+            ],
+            series: [
+
+                {
+                    name: '2022年',
+                    type: 'bar',
+                    itemStyle: {
+                        normal: {
+                            color: new echarts.graphic.LinearGradient(
+                                0, 0, 0, 1,
+                                [
+                                    { offset: 0, color: '#b266ff' },
+                                    { offset: 1, color: '#121b87' }
+                                ]
+                            )
+                        }
+                    },
+                    data: [43, 49, 70]
+                },
+                {
+                    name: '2023年',
+                    type: 'bar',
+                    itemStyle: {
+                        normal: {
+                            color: new echarts.graphic.LinearGradient(
+                                0, 0, 0, 1,
+                                [
+                                    { offset: 0, color: '#00f0ff' },
+                                    { offset: 1, color: '#032a72' }
+                                ]
+                            )
+                        }
+                    },
+                    data: [67, 59, 90]
+                },
+                {
+                    name: '同比增速',
+                    type: 'line',
+                    itemStyle: {
+                        normal: {
+                            color: new echarts.graphic.LinearGradient(
+                                0, 0, 0, 1,
+                                [
+                                    { offset: 0, color: '#fffb34' },
+                                    { offset: 1, color: '#fffb34' }
+                                ]
+                            )
+                        }
+                    },
+                    yAxisIndex: 1,
+                    data: [5.6, 3.5, 5.5]
+                }
+            ]
+        };
+
+        myChart.setOption(option);
+        myChart1.setOption(option);
+
+    </script>
+
+    <!--三通建设情况 -->
+    <script>
+        var chartDom = echarts.init(document.getElementById('construct'));
+        var option;
+        option = {
+            color: ['#f1b1ff', '#aae3fb', '#e5ffc7'],
+            legend: {
+                itemStyle:{
+                    borderWidth:0
+                },
+                textStyle: {
+                    fontSize: 10,
+                    color: 'rgba(255,255,255,0.7)'
+                },
+                data: ['班班通', '校校通', '人人通']
+            },
+            calculable: true,
+            series: [
+
+                {
+                    name: '面积模式',
+                    type: 'pie',
+                    radius: [10, 50],
+                    center: ['50%', '55%'],
+                    roseType: 'area',
+                    data: [
+                        { value: 187650, name: '班班通' },
+                        { value: 145896, name: '校校通' },
+                        { value: 148920, name: '人人通' },
+                    ],
+                    itemStyle: {
+                        borderRadius: 3
+                    },
+                    label: {
+                        alignTo: 'edge',
+                        formatter: '{b}\n{time|{c}}',
+                        minMargin: 5,
+                        edgeDistance: 10,
+                        lineHeight: 15,
+                        color:'rgba(255,255,255,0.7)',
+                        rich: {
+                            time: {
+                                fontSize: 10,
+                                color: '#999'
+                            }
+                        }
+                    },
+                    labelLine: {
+                        length: 15,
+                        length2: 0,
+                        maxSurfaceAngle: 80
+                    },
+                }
+            ]
+        };
+
+        option && chartDom.setOption(option);
+    </script>
+
+    <script type="text/javascript">
+        var statusQuoChart = echarts.init(document.getElementById('statusQuo'));
+        option = {
+            color: ['#E3DAEB', '#BCDDDF', '#706562', '#4A3A3E', '#D98B0F'],
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data: [
+                    '初中直播个数',
+                    '初中录播班个数',
+                    '小学植入式教学班个数',
+                    '幼儿园观摩式教学班个数',
+                    '四川云教接受学校个数'
+                ],
+                textStyle:
+                {
+                    color: 'white',
+                    fontSize: 8
+                }
+            },
+            calculable: true,
+            xAxis: [
+                {
+                    type: 'category',
+                    data: ['2021年', '2022年', '2023年'],
+                    axisLine: {
+                        lineStyle:
+                        {
+                            color: 'white'
+                        }
+                    }
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value',
+                    axisLine: {
+                        lineStyle:
+                        {
+                            color: 'white'
+                        }
+                    }
+                },
+
+            ],
+            series: [
+                {
+                    name: '初中直播个数',
+                    type: 'bar',
+                    data: [405, 63, 84],
+                    showBackground: true,
+                    itemStyle: {
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                            { offset: 0, color: '#83bff6' },
+                            { offset: 0.5, color: '#188df0' },
+                            { offset: 1, color: '#188df0' }
+                        ])
+                    },
+                    emphasis: {
+                        itemStyle: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                                { offset: 0, color: '#2378f7' },
+                                { offset: 0.7, color: '#2378f7' },
+                                { offset: 1, color: '#83bff6' }
+                            ])
+                        }
+                    },
+                },
+                {
+                    name: '初中录播班个数',
+                    type: 'bar',
+                    data: [309, 25, 94],
+                    showBackground: true,
+                    itemStyle: {
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                            { offset: 0, color: '#83bff6' },
+                            { offset: 0.5, color: '#188df0' },
+                            { offset: 1, color: '#188df0' }
+                        ])
+                    },
+                    emphasis: {
+                        itemStyle: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                                { offset: 0, color: '#2378f7' },
+                                { offset: 0.7, color: '#2378f7' },
+                                { offset: 1, color: '#83bff6' }
+                            ])
+                        }
+                    },
+                },
+                {
+                    name: '小学植入式教学班个数',
+                    type: 'bar',
+                    data: [124, 45, 64], showBackground: true,
+                    itemStyle: {
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                            { offset: 0, color: '#83bff6' },
+                            { offset: 0.5, color: '#188df0' },
+                            { offset: 1, color: '#188df0' }
+                        ])
+                    },
+                    emphasis: {
+                        itemStyle: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                                { offset: 0, color: '#2378f7' },
+                                { offset: 0.7, color: '#2378f7' },
+                                { offset: 1, color: '#83bff6' }
+                            ])
+                        }
+                    },
+                },
+                {
+                    name: '幼儿园观摩式教学班个数',
+                    type: 'bar',
+                    data: [54, 55, 124],
+                    showBackground: true,
+                    itemStyle: {
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                            { offset: 0, color: '#83bff6' },
+                            { offset: 0.5, color: '#188df0' },
+                            { offset: 1, color: '#188df0' }
+                        ])
+                    },
+                    emphasis: {
+                        itemStyle: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                                { offset: 0, color: '#2378f7' },
+                                { offset: 0.7, color: '#2378f7' },
+                                { offset: 1, color: '#83bff6' }
+                            ])
+                        }
+                    },
+                },
+                {
+                    name: '四川云教接受学校个数',
+                    type: 'bar',
+                    data: [30, 45, 64],
+                    showBackground: true,
+                    itemStyle: {
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                            { offset: 0, color: '#83bff6' },
+                            { offset: 0.5, color: '#188df0' },
+                            { offset: 1, color: '#188df0' }
+                        ])
+                    },
+                    emphasis: {
+                        itemStyle: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                                { offset: 0, color: '#2378f7' },
+                                { offset: 0.7, color: '#2378f7' },
+                                { offset: 1, color: '#83bff6' }
+                            ])
+                        }
+                    },
+                }
+            ]
+        };
+
+        statusQuoChart.setOption(option);
+    </script>
+    <!-- 地图 -->
+    <script type="text/javascript">
+        $(function () {
+            //使用echarts.init()方法初始化一个Echarts实例，在init方法中传入echarts map的容器 dom对象
+            var mapChart = echarts.init(document.getElementById('topmap'));
+            // mapChart的配置
+            var option = {
+                tooltip: {
+                    trigger: 'item',
+                    formatter: (e) => {
+                        console.log(e, 444);
+                        return `${e.data.name}<br/>师生数量：${e.data.valueData}`;
+                    }
+                },
+                geo: {
+                    // roam:true,
+                    map: '成都',
+                    aspectScale: 0.9,
+                    zoom: 1.25,
+                    label: {
+                        show: true,
+                        formatter: (e) => {
+                            return "";
+                        }
+                    },
+                    itemStyle: {
+                        color: '#CDAD00'
+                    },
+                },
+                series: [
+                    {
+                        type: 'effectScatter',//type必须声明为 map 说明该图标为echarts 中map类型
+                        coordinateSystem: 'geo',
+                        symbolSize: 10,
+                        data: [
+                            { name: '新龙县绕鲁乡幼儿园', value: [100.312912, 31.100182], valueData: 5645 },
+                            { name: '新龙县城兴小学', value: [100.274414, 30.656681], valueData: 45 },
+                            { name: '新龙幼儿园', value: [100.312779, 30.941206], valueData: 4 },
+                            { name: '新龙县中学', value: [100.312425, 30.9785344], valueData: 3400 },
+                        ],
+                        legendHoverLink: true,
+                        showEffectOn: 'render',
+                        rippleEffect: {
+                            color: 'red',
+                            brushType: 'stroke'
+                        },
+                        label: {
+                            show: false,
+                            formatter: (e) => {
+                                return e.data.name;
+                            },
+                            fontSize: 9,
+                            offset: [0, -5]
+                        }
+                    }
+                ]
+            };
+            //设置图表的配置项
+            mapChart.setOption(option);
+
+            // var  geo = mapChart.getModel().getComonent('geo').coordinateSystem;
+
+        });
+
+
+
+
+    </script>
+
+</body>
+
+</html>

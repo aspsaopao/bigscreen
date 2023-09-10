@@ -35,20 +35,7 @@
 <body>
   <div class="wpbox">
     <div class="bnt">
-      <div class="topbnt_left fl">
-        <ul>
-          <li class="active"><a href="#">智慧教研</a></li>
-          <li><a href="../项目展示模板4/index.html">智慧管理</a></li>
-        </ul>
-      </div>
       <h1 class="tith1 fl">新龙县信息化教育数据应用监控平台</h1>
-      <div class=" fr topbnt_right">
-        <ul>
-          <li><a href="#">智慧教学</a></li>
-          <li><a href="#">空间普及</a></li>
-        </ul>
-        </ul>
-      </div>
     </div>
     <!-- bnt end -->
     <div class="left1">
@@ -121,10 +108,6 @@
       <!-- mrbox_top end -->
       <div class="mrbox_top_right">
         <div class="arightboxtop">
-          <h2 class="tith2">用户活跃趋势</h2>
-          <div id="aleftboxtbott" class="aleftboxtbott_contr"></div>
-        </div>
-        <div class="arightboxbott">
           <h2 class="tith2 ">信息化硬件设施情况</h2>
 
           <div id="aleftboxtmiddr" class="arightboxbottcont2"></div>
@@ -195,27 +178,27 @@
           axisTick: {
             alignWithLabel: true
           },
-          axisLabel:{
-            interval:0,
-            rotate:20
+          axisLabel: {
+            interval: 0,
+            rotate: 20
           },
           axisLine: {
-                lineStyle:
-                {
-                  color: 'white'
-                }
-              }
+            lineStyle:
+            {
+              color: 'white'
+            }
+          }
         }
       ],
       yAxis: [
         {
           type: 'value',
           axisLine: {
-                lineStyle:
-                {
-                  color: 'white'
-                }
-              }
+            lineStyle:
+            {
+              color: 'white'
+            }
+          }
         }
       ],
       series: [
@@ -226,8 +209,8 @@
           data: [10, 52, 200, 334, 390, 330, 220]
         }
       ]
-};
-   
+    };
+
     myChart.setOption(option);
   </script>
 
@@ -593,7 +576,7 @@
   </script>
   <script type="text/javascript">
     var statusQuoChart = echarts.init(document.getElementById('statusQuo'));
-     option = {
+    option = {
       color: ['#E3DAEB', '#BCDDDF', '#706562', '#4A3A3E', '#D98B0F'],
       tooltip: {
         trigger: 'axis'
@@ -806,8 +789,9 @@
         },
         series: [
           {
-            type: 'scatter',//type必须声明为 map 说明该图标为echarts 中map类型
+            type: 'effectScatter',//type必须声明为 map 说明该图标为echarts 中map类型
             coordinateSystem: 'geo',
+            symbolSize: 10,
             data: [
               // {name:'新龙县', value: 1800}, 
               { name: '新龙县绕鲁乡幼儿园', value: [100.312912, 31.100182], valueData: 5645 },
@@ -816,14 +800,20 @@
               { name: '新龙县中学', value: [100.312425, 30.9785344], valueData: 3400 },
 
             ],
-            label:{
-              show:true,
-              formatter:(e)=>{
-                console.log(e,11);
-                return  e.data.name;
+            legendHoverLink:false,
+            showEffectOn: 'render',
+            rippleEffect: {
+              color:'red',
+              brushType: 'stroke'
+            },
+            label: {
+              show: false,
+              formatter: (e) => {
+                console.log(e, 11);
+                return e.data.name;
               },
-              fontSize:9,
-              offset:[0,-5]
+              fontSize: 9,
+              offset: [0, -5]
             }
           }
         ]
